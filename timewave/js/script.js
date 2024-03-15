@@ -11,6 +11,7 @@ window.onload = async function() {
     showDetils(chartData);
   } catch (error) {
     console.log("error", error);
+    throw new Error(error);
   }
 }
 
@@ -95,9 +96,7 @@ const  getPoints = (data) => {
 }
 
 const showDetils = (chartData) => {
-  console.log("showdetail")
   const ibc_data = chartData[IBC_TOKEN].series;
-  console.log("ibc_data", ibc_data)
   const untrn_data = chartData[UNTRN_TOKEN].series;
 
   const ibc_average = ibc_data.reduce((a, b) => a += b.value, 0)/ ibc_data.length;

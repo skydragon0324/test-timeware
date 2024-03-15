@@ -3,13 +3,10 @@ const API_URL = 'https://app.astroport.fi/api/trpc/charts.prices';
 const IBC_TOKEN = "ibc/C4CFF46FD6DE35CA4CF4CE031E643C8FDC9BA4B99AE598E9B0ED98FE3A2319F9";
 const UNTRN_TOKEN = "untrn";
 
-const timewareChart = document.getElementById("#timeware_chart");
-
 window.onload = async function() {
   try {
     const data = await fetchData();
     const chartData = data.result.data.json;
-    console.log("fetch data", chartData);
     renderChart(chartData);
     showDetils(chartData);
   } catch (error) {
@@ -42,12 +39,12 @@ const fetchData = async () => {
 const renderChart = (chartData) => {
   const ibc_data = chartData[IBC_TOKEN].series;
   const untrn_data = chartData[UNTRN_TOKEN].series;
-  var chart = new CanvasJS.Chart("timeware_chart", {
+  var chart = new CanvasJS.Chart("timewave_chart", {
     zoomEnabled: true,
     zoomType: "xy",
     exportEnabled: true,
     title: {
-      text: "Timeware 7-days price chart",
+      text: "Timewave 7-days price chart",
       fontSize: 36,
       fontColor: 'red'
     },
